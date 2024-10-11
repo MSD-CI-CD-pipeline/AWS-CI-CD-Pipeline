@@ -39,6 +39,8 @@
 | **CI/CD 도구**      | <img src="https://img.shields.io/badge/jenkins-D24939?style=flat-square&logo=jenkins&logoColor=white"/> Jenkins |
 | **터미널 에뮬레이터** | <img src="https://img.shields.io/badge/MobaXterm-241F31?style=flat-square&logo=MobaXterm&logoColor=white"/> MobaXterm |
 | **컨테이너화**       | <img src="https://img.shields.io/badge/Docker-2496ED?style=flat-square&logo=Docker&logoColor=white"/> Docker 27.3.1 |
+| **가상화 소프트웨어** | <img src="https://img.shields.io/badge/VirtualBox-183A61?style=flat-square&logo=virtualbox&logoColor=white"/> VirtualBox |
+| **AWS CLI**          | <img src="https://img.shields.io/badge/AWS_CLI-232F3E?style=flat-square&logo=amazonaws&logoColor=white"/> AWS CLI |
 
 
 <br/><br/>
@@ -69,7 +71,7 @@
 <br/><br/>
 
 
-## 1️⃣ 작업 1:jenkins & github 에 웹 훅 걸기 
+## 1️⃣ 작업 1:Jenkins & Github 에 웹 훅 걸기 
 1. `GitHub 웹 훅 설정`: Jenkins와 GitHub를 연동하기 위해, GitHub에서 웹 훅을 생성하여 Jenkins로의 트리거를 설정하였습니다.
 
 2. `Ngrok을 이용한 Jenkins 외부 접근 설정`: 로컬 네트워크에서 구동 중인 Jenkins에 외부에서 접근할 수 있도록 Ngrok을 활용하여 안전한 터널링을 구성하였습니다. 이를 통해 GitHub 웹 훅이 로컬 Jenkins 서버에 접근할 수 있도록 했습니다.
@@ -122,7 +124,7 @@ aws_secret_access_key =
 ||||                                IamInstanceProfile                                 ||||
 |||+-------+---------------------------------------------------------------------------+|||
 ||||  Arn  |  arn:aws:iam::646580111040:instance-profile/ce35-user                     ||||
-||||  Id   |  AIPAZNCZNQ3AMHMY2BQZO                                                    ||||
+||||  Id   |  AIPAZ******************                                                  ||||
 |||+-------+---------------------------------------------------------------------------+
 ```
 <br/>
