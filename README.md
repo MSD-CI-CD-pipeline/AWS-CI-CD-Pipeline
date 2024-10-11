@@ -75,8 +75,8 @@
 
 <br/><br/>
 
-## 1️⃣ 작업 2:Jenkins에서 S3로 JAR 파일 빌드 후 업로드
-1. Jenkins 서버에 AWS CLI 설치
+## 2️⃣ 작업 2:Jenkins에서 S3로 JAR 파일 빌드 후 업로드
+### 1. Jenkins 서버에 AWS CLI 설치
 ```bash
 # Jenkins 컨테이너에서 sudo 명령어 사용이 제한되어, root 계정으로 전환하여 작업
 docker exec -itu0 myjenkins bash 
@@ -87,88 +87,36 @@ apt-get install awscli -y
 
 aws configure
 ```
-   * 만약 해당 과정 생략 후 빌드 시 아래와 같은 오류 발생함 (Jenkins 서버에 AWS CLI가 설치되어 있지 않거나 `PATH`에 포함되어 있지 않아서 발생하는 오류)
+* 만약 해당 과정 생략 후 빌드 시 아래와 같은 오류 발생함 (Jenkins 서버에 AWS CLI가 설치되어 있지 않거나 `PATH`에 포함되어 있지 않아서 발생하는 오류)
+     
+   <img src="https://github.com/user-attachments/assets/11f23328-4d5e-4b96-a496-d2565cae0b53" width="65%">
 
-   ![11](https://github.com/user-attachments/assets/11f23328-4d5e-4b96-a496-d2565cae0b53)
+<br/>
 
-
+### 2. Jenkins AWS 자격 증명에 읽기 권한 추가
+* Jenkins에서 AWS 리소스(S3 등)에 안전하게 접근할 수 있도록, AWS 자격 증명에 필요한 읽기 권한을 추가
 ```bash
-pipeline {
-    agent any
-    environment {
-        S3_BUCKET = 'ce35-bucket-02'
-        AWS_SHARED_CREDENTIALS_FILE = '/root/.aws/credentials' // 자격 증명 파일 경로
-        AWS_DEFAULT_REGION = 'ap-northeast-2' // 기본 리전 설정
-    }
-    stages {
-        stage('Set AWS Region') {
-            steps {
-                script {
-                    echo "Using AWS Region: ${env.AWS_DEFAULT_REGION}"
-                }
-            }
-        }
+# 읽기 권한 확인 (없음)
+root@b487084d5f73:/# ls -l ~/.aws/credentials
+-rw------- 1 root root 116 Oct 11 02:52 /root/.aws/credentials
 
-        stage('Verify AWS CLI') {
-            steps {
-                script {
-                    sh "aws --version"
-                }
-            }
-        }
+# 읽기 권한 추가
+root@b487084d5f73:/# chmod 640 /root/.aws/credentials
 
-        stage('Clone Repository') {
-            steps {
-                git branch: 'main', url: 'https://github.com/MSD-CI-CD-pipeline/AWS-CI-CD-Pipeline.git'
-            }
-        }
+# 읽기 권한 확인
+root@b487084d5f73:/# ls -l ~/.aws/credentials
+-rw-r----- 1 root root 116 Oct 11 02:52 /root/.aws/credentials
 
-        stage('Build') {
-            steps {
-                dir('./step18_empApp') {
-                    sh 'chmod +x gradlew'
-                    sh './gradlew clean build -x test'
-                    echo "Workspace: ${env.WORKSPACE}"
-                }
-            }
-        }
-        
-        stage('Configure S3 Bucket') {
-            steps {
-                script {
-		                sh "aws configure get region"
-                    // 퍼블릭 액세스 차단 설정 제거
-                    sh "aws s3api delete-public-access-block --bucket ${S3_BUCKET} --region ${AWS_DEFAULT_REGION}"
-                    
-                    // 버킷 소유권 제어 설정
-                    sh "aws s3api put-bucket-ownership-controls --bucket ${S3_BUCKET} --ownership-controls '{\"Rules\":[{\"ObjectOwnership\":\"ObjectWriter\"}]}' --region ${AWS_DEFAULT_REGION}"
-                    
-                    // 버킷 ACL을 public-read로 설정
-                    sh "aws s3api put-bucket-acl --bucket ${S3_BUCKET} --acl public-read --region ${AWS_DEFAULT_REGION}"
-                }
-            }
-        }
-        
-        stage('Upload JAR to S3') {
-            steps {
-                script {
-                    def jarFile = 'step18_empApp/build/libs/step18_empApp-0.0.1-SNAPSHOT.jar'
-                    def s3Path = "s3://${S3_BUCKET}/"
-                    sh "aws s3 cp ${jarFile} ${s3Path} --acl public-read --region ${AWS_DEFAULT_REGION}"
-                }
-            }
-        }
-    }
-}
+username@awsclient:~$ mkdir -p /var/lib/jenkins/.aws
 
+jenkins@b487084d5f73:/$ cat /var/lib/jenkins/.aws/credentials
+[default]
+aws_access_key_id = 
+aws_secret_access_key =
 ```
+<br/>
 
-credentials 에 읽기 권한 추가 
-
-![12](https://github.com/user-attachments/assets/17265561-14ea-4383-863f-4369215c710a)
-![13](https://github.com/user-attachments/assets/736d988e-c9ef-4fd7-9d34-a61dc78c174b)
-
-
+### 3. Jenkins에서 S3 자동 업로드 파이프라인 작성
 ```bash
 pipeline {
     agent any
@@ -225,7 +173,9 @@ pipeline {
 
 ```
 
-### EC2로 배포하기
+<br/><br/>
+
+## 3️⃣ 작업 3:EC2로의 배포
 
 ### 1. Jenkins 컨테이너에서 PEM 키 설정
 
@@ -245,6 +195,7 @@ username@servername:~$ docker cp ./ce35-key.pem myjenkins:/var/lib/jenkins/.ssh/
 username@servername:~$ docker exec -u root myjenkins bash -c "chmod 400 /var/lib/jenkins/.ssh/ce35-key.pem"
 
 ```
+<br/>
 
 ### 2. EC2 인스턴스에 AWS CLI 설치 및 IAM 역할 부여
 
@@ -252,15 +203,19 @@ username@servername:~$ docker exec -u root myjenkins bash -c "chmod 400 /var/lib
     - AWS Management Console에서 IAM으로 이동.
     - 역할 생성을 선택하고, AWS Service에서 EC2를 선택
     - 적절한 정책을 선택하여 EC2 인스턴스와 연결
-
-1-1. 역할 생성 클릭 
-![im1](https://github.com/user-attachments/assets/8e02168a-7e17-4a29-9026-a0da0a7a95ce)
+<br>
+1-1. 역할 생성 클릭
+<br>
+ <img src="https://github.com/user-attachments/assets/8e02168a-7e17-4a29-9026-a0da0a7a95ce" width="75%">
 
 1-2. AWS Service 선택 - EC2
-![im3](https://github.com/user-attachments/assets/1d090d9f-e248-468d-8c97-a1a4a9c5a8f2)
+<br>
+ <img src="https://github.com/user-attachments/assets/1d090d9f-e248-468d-8c97-a1a4a9c5a8f2" width="75%">
 
-역할 생성하고 해당 EC2 인스턴스와 연결 
-![im2](https://github.com/user-attachments/assets/5deafa5c-f4c2-4047-8023-893437f8afa1)
+1-3. 역할 생성하고 해당 EC2 인스턴스와 연결 
+<br>
+ <img src="https://github.com/user-attachments/assets/5deafa5c-f4c2-4047-8023-893437f8afa1" width="75%">
+
 ### 3. Jenkins 파이프라인 스크립트
 - S3에서 EC2로 복사하는 대신, EC2에 직접 접근하여 S3에 있는 JAR 파일을 다운로드하도록 수정합니다. 이 작업을 수행하기 위해서는 EC2 인스턴스에 적절한 IAM 권한을 부여해야 합니다. IAM 권한이 없으면 S3에서 파일을 다운로드할 수 없습니다.
 
@@ -362,12 +317,15 @@ pipeline {
 }
 
 ```
+<br/>
 
 ### 요약
 
 - 위의 Jenkins 파이프라인은 S3에서 JAR 파일을 EC2로 복사한 후 실행하는 과정이다.
 - PEM 키는 Jenkins 컨테이너 내의 `.ssh` 디렉토리에 저장되어 있으며, IAM 역할이 EC2 인스턴스에 적절하게 부여되어 있어야 한다.
 - 스크립트 실행 후, JAR 파일이 EC2에서 성공적으로 배포되고 실행된다.
+
+<br/><br/>
 
 ## 🛠 트러블슈팅
 
