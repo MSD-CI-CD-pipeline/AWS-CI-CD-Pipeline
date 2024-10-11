@@ -319,6 +319,15 @@ pipeline {
 ```
 <br/>
 
+### EC2 배포 후 파일 구조 확인
+
+```bash
+ubuntu@ip-10-11-6-115:~$ tree
+.
+├── awscliv2.zip
+└── step18_empApp-0.0.1-SNAPSHOT.jar
+```
+
 ### 요약
 
 - 위의 Jenkins 파이프라인은 S3에서 JAR 파일을 EC2로 복사한 후 실행하는 과정이다.
