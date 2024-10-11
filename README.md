@@ -87,11 +87,15 @@
 # Jenkins 컨테이너에서 sudo 명령어 사용이 제한되어, root 계정으로 전환하여 작업했습니다. 
 docker exec -itu0 myjenkins bash 
 
-sudo apt-get update
+apt-get update
 
 apt-get install awscli -y
 
 aws configure
+AWS Access Key ID [****************JS2T]:
+AWS Secret Access Key [****************qPca]:
+Default region name [None]: ap-northeast-2
+Default output format [None]: json
 ```
 * 만약 해당 과정 생략 후 빌드 시 아래와 같은 오류 발생했습니다. (Jenkins 서버에 AWS CLI가 설치되어 있지 않거나 `PATH`에 포함되어 있지 않아서 발생하는 오류)
      
