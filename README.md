@@ -1,5 +1,8 @@
 # Jenkins 기반 CI/CD 파이프라인 구축 및 S3 자동 배포
 
+<img width="571" alt="2222" src="https://github.com/user-attachments/assets/15628949-d23e-49ab-9e9c-dcedf778bc74">
+
+
 ## 🚪 들어가기 전
 이 프로젝트의 목적은 효율적인 CI/CD 파이프라인을 구축하여 애플리케이션 배포를 자동화하는 것입니다. 이를 위해 다음과 같은 단계로 작업을 진행하였습니다.
 
