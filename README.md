@@ -1,6 +1,6 @@
 # Jenkins 기반 CI/CD 파이프라인 구축 및 S3 자동 배포
 
-<img width="571" alt="2222" src="https://github.com/user-attachments/assets/15628949-d23e-49ab-9e9c-dcedf778bc74">
+<img width="1000" alt="2222" src="https://github.com/user-attachments/assets/15628949-d23e-49ab-9e9c-dcedf778bc74">
 
 
 ## 🚪 들어가기 전
