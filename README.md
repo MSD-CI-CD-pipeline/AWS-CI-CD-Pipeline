@@ -45,26 +45,32 @@
  <img src="https://github.com/user-attachments/assets/e2942a35-5d9c-450f-a9d0-b6ea2ff7f656" width="75%">
 <br/><br/>
 
-# 🔥트러블 슈팅
 
-### AWS CLI 설정
+## 1️⃣ 작업 1:jenkins & github 에 웹 훅 걸기 
+1. `GitHub 웹 훅 설정`: Jenkins와 GitHub를 연동하기 위해, GitHub에서 웹 훅을 생성하여 Jenkins로의 트리거를 설정하였습니다.
 
-Jenkins 서버에 AWS CLI가 설치되어 있지 않거나 `PATH`에 포함되어 있지 않아서 발생하는 오류 발생 
-![11](https://github.com/user-attachments/assets/11f23328-4d5e-4b96-a496-d2565cae0b53)
+2. `Ngrok을 이용한 Jenkins 외부 접근 설정`: 로컬 네트워크에서 구동 중인 Jenkins에 외부에서 접근할 수 있도록 Ngrok을 활용하여 안전한 터널링을 구성하였습니다. 이를 통해 GitHub 웹 훅이 로컬 Jenkins 서버에 접근할 수 있도록 했습니다.
 
+3. `Jenkins에서 GitHub 리포지토리 연동`: Jenkins에서 GitHub 리포지토리를 등록하고, 빌드가 자동으로 트리거되도록 설정하였습니다.
 
-해결 → jenkins 서버에 aws cli 설치 
+<br/><br/>
 
-jenkins 컨테이너 안에서 sudo 명령어 쓸 수가ㅏ 없어서 root 계정으로 접속
-
+## 1️⃣ 작업 2:Jenkins에서 S3로 JAR 파일 빌드 후 업로드
+1. Jenkins 서버에 AWS CLI 설치
 ```bash
+# Jenkins 컨테이너에서 sudo 명령어 사용이 제한되어, root 계정으로 전환하여 작업
 docker exec -itu0 myjenkins bash 
 
 sudo apt-get update
 
-aws configure
+apt-get install awscli -y
 
+aws configure
 ```
+   * 만약 해당 과정 생략 후 빌드 시 아래와 같은 오류 발생함 (Jenkins 서버에 AWS CLI가 설치되어 있지 않거나 `PATH`에 포함되어 있지 않아서 발생하는 오류)
+
+   ![11](https://github.com/user-attachments/assets/11f23328-4d5e-4b96-a496-d2565cae0b53)
+
 
 ```bash
 pipeline {
