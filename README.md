@@ -39,6 +39,11 @@
 - **컨테이너화:** Docker 27.3.1
 <br/><br/>
 
+## ⛯ 자동화된 배포 과정 다이어그램 
+
+ <img src="https://github.com/user-attachments/assets/e2942a35-5d9c-450f-a9d0-b6ea2ff7f656" width="75%">
+<br/><br/>
+
 # 🔥트러블 슈팅
 
 ### AWS CLI 설정
