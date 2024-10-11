@@ -117,7 +117,7 @@ root@b487084d5f73:/# chmod 640 /root/.aws/credentials
 root@b487084d5f73:/# ls -l ~/.aws/credentials
 -rw-r----- 1 root root 116 Oct 11 02:52 /root/.aws/credentials
 
-username@awsclient:~$ mkdir -p /var/lib/jenkins/.aws
+username@awsclient:~$ sudo mkdir -p /var/lib/jenkins/.aws
 
 jenkins@b487084d5f73:/$ cat /var/lib/jenkins/.aws/credentials
 [default]
