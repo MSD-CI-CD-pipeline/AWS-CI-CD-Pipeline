@@ -40,7 +40,7 @@
 | **터미널 에뮬레이터** | <img src="https://img.shields.io/badge/MobaXterm-241F31?style=flat-square&logo=MobaXterm&logoColor=white"/>  |
 | **컨테이너화**       | <img src="https://img.shields.io/badge/Docker 27.3.1-2496ED?style=flat-square&logo=Docker&logoColor=white"/>  |
 | **가상화 소프트웨어** | <img src="https://img.shields.io/badge/VirtualBox-183A61?style=flat-square&logo=virtualbox&logoColor=white"/>  |
-| **CLI 도구**          | <img src="https://img.shields.io/badge/AWS_CLI-232F3E?style=flat-square&logo=amazonaws&logoColor=white"/>  |
+| **CLI 도구**          | <img src="https://img.shields.io/badge/AWS_CLI_v2-232F3E?style=flat-square&logo=amazonaws&logoColor=white"/>  |
 
 
 <br/><br/>
