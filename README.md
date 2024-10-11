@@ -34,13 +34,13 @@
 
 | **항목**            | **상세 정보**                                                                                  |
 |---------------------|-----------------------------------------------------------------------------------------------|
-| **운영 체제**       | <img src="https://img.shields.io/badge/Ubuntu-E95420?style=flat-square&logo=Ubuntu&logoColor=white"/> 22.04.5 LTS |
-| **클라우드 서비스** | <img src="https://img.shields.io/badge/amazonec2-FF9900?style=flat-square&logo=amazonec2&logoColor=white"/> Amazon EC2 <br> <img src="https://img.shields.io/badge/amazonrds-527FFF?style=flat-square&logo=amazonrds&logoColor=white"/> Amazon RDS <br><img src="https://img.shields.io/badge/amazons3-569A31?style=flat-square&logo=amazons3&logoColor=white"/> Amazon S3 |
-| **CI/CD 도구**      | <img src="https://img.shields.io/badge/jenkins-D24939?style=flat-square&logo=jenkins&logoColor=white"/> Jenkins |
-| **터미널 에뮬레이터** | <img src="https://img.shields.io/badge/MobaXterm-241F31?style=flat-square&logo=MobaXterm&logoColor=white"/> MobaXterm |
-| **컨테이너화**       | <img src="https://img.shields.io/badge/Docker-2496ED?style=flat-square&logo=Docker&logoColor=white"/> Docker 27.3.1 |
-| **가상화 소프트웨어** | <img src="https://img.shields.io/badge/VirtualBox-183A61?style=flat-square&logo=virtualbox&logoColor=white"/> VirtualBox |
-| **AWS CLI**          | <img src="https://img.shields.io/badge/AWS_CLI-232F3E?style=flat-square&logo=amazonaws&logoColor=white"/> AWS CLI |
+| **운영 체제**       | <img src="https://img.shields.io/badge/Ubuntu 22.04.5 LTS-E95420?style=flat-square&logo=Ubuntu&logoColor=white"/>  |
+| **클라우드 서비스** | <img src="https://img.shields.io/badge/amazonec2-FF9900?style=flat-square&logo=amazonec2&logoColor=white"/> <br> <img src="https://img.shields.io/badge/amazonrds-527FFF?style=flat-square&logo=amazonrds&logoColor=white"/>  <br><img src="https://img.shields.io/badge/amazons3-569A31?style=flat-square&logo=amazons3&logoColor=white"/>  |
+| **CI/CD 도구**      | <img src="https://img.shields.io/badge/jenkins-D24939?style=flat-square&logo=jenkins&logoColor=white"/>  |
+| **터미널 에뮬레이터** | <img src="https://img.shields.io/badge/MobaXterm-241F31?style=flat-square&logo=MobaXterm&logoColor=white"/>  |
+| **컨테이너화**       | <img src="https://img.shields.io/badge/Docker 27.3.1-2496ED?style=flat-square&logo=Docker&logoColor=white"/>  |
+| **가상화 소프트웨어** | <img src="https://img.shields.io/badge/VirtualBox-183A61?style=flat-square&logo=virtualbox&logoColor=white"/>  |
+| **CLI 도구**          | <img src="https://img.shields.io/badge/AWS_CLI-232F3E?style=flat-square&logo=amazonaws&logoColor=white"/>  |
 
 
 <br/><br/>
