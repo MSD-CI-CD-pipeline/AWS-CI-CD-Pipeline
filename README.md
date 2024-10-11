@@ -1,23 +1,31 @@
-# AWS-CI-CD-Pipeline
+# Jenkins 기반 CI/CD 파이프라인 구축 및 S3 자동 배포
 Jenkins와 GitHub 웹훅을 활용한 CI/CD 파이프라인을 구축하였으며, 빌드된 JAR 파일을 AWS S3에 자동으로 업로드하여 배포 과정을 효율화하였습니다.
+<br/><br/>
 
-# ??
+## 👥 팀원 소개
 
-1. jenkins & github 에 웹 훅 걸기 
-2. ngrok 
-3. SpringBoot + DB 연동
-4. S3 명령어 기반으로 순수 linux pipeline 으로 
-    1. jenkins 에서 s3로 build 된 jar 업로드시 aws  cli  
-5. S3에 jar 업로드 (최종) 
-6. EC2 에서 서비스 구동 
+| 노솔리 | 구동길 | 홍민영 |
+|:-----------:|:-----------:|:-----------:|
+| <img width="100px" src="https://avatars.githubusercontent.com/soljjang777" /> | <img width="100px" src="https://avatars.githubusercontent.com/dkac0012"/> | <img width="100px" src="https://avatars.githubusercontent.com/u/65701100?v=4"/> |
+| [@soljjang777](https://github.com/soljjang777) | [@dkac0012](https://github.com/dkac0012) | [@HongMinYeong](https://github.com/HongMinYeong) |
 
-1. jenkins 실행 
-2. ngrok 등록 (ngrok http 8080)
-3. jenkins 파이프라인 설정 
+<br/><br/>
 
-# 트러블 슈팅
+## 💻 시스템 환경 및 소프트웨어
 
-## AWS CLI 설정
+- **운영 체제:** Ubuntu 22.04.5 LTS
+- **클라우드 서비스:**
+  - AWS EC2
+  - AWS RDS
+  - AWS S3
+- **CI/CD 도구:** Jenkins
+- **터미널 에뮬레이터:** MobaXterm
+- **컨테이너화:** Docker 27.3.1
+<br/><br/>
+
+# 🔥트러블 슈팅
+
+### AWS CLI 설정
 
 Jenkins 서버에 AWS CLI가 설치되어 있지 않거나 `PATH`에 포함되어 있지 않아서 발생하는 오류 발생 
 ![11](https://github.com/user-attachments/assets/11f23328-4d5e-4b96-a496-d2565cae0b53)
@@ -206,6 +214,7 @@ username@servername:~$ docker exec -u root myjenkins bash -c "chmod 400 /var/lib
 역할 생성하고 해당 EC2 인스턴스와 연결 
 ![im2](https://github.com/user-attachments/assets/5deafa5c-f4c2-4047-8023-893437f8afa1)
 ### 3. Jenkins 파이프라인 스크립트
+- S3에서 EC2로 복사하는 대신, EC2에 직접 접근하여 S3에 있는 JAR 파일을 다운로드하도록 수정합니다. 이 작업을 수행하기 위해서는 EC2 인스턴스에 적절한 IAM 권한을 부여해야 합니다. IAM 권한이 없으면 S3에서 파일을 다운로드할 수 없습니다.
 
 ```groovy
 pipeline {
