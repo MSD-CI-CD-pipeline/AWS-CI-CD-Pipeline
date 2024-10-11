@@ -67,7 +67,8 @@
 
 ## ⛯ 자동화된 배포 과정 다이어그램 
 
- <img src="https://github.com/user-attachments/assets/e2942a35-5d9c-450f-a9d0-b6ea2ff7f656" width="75%">
+ <img src="https://github.com/user-attachments/assets/e9eea955-49ca-4150-980b-375067e04bf2" width="75%">
+
 <br/><br/>
 
 
