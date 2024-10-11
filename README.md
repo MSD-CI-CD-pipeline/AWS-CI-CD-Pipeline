@@ -20,8 +20,8 @@ Jenkins와 GitHub 웹훅을 활용한 CI/CD 파이프라인을 구축하였으�
 ## AWS CLI 설정
 
 Jenkins 서버에 AWS CLI가 설치되어 있지 않거나 `PATH`에 포함되어 있지 않아서 발생하는 오류 발생 
+![11](https://github.com/user-attachments/assets/11f23328-4d5e-4b96-a496-d2565cae0b53)
 
-![image.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/75620ae2-9ad6-409a-a317-5ea81d4349ba/113129ec-9317-481d-ad5f-fcd9c14ccf11/image.png)
 
 해결 → jenkins 서버에 aws cli 설치 
 
@@ -109,9 +109,9 @@ pipeline {
 
 credentials 에 읽기 권한 추가 
 
-![image.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/75620ae2-9ad6-409a-a317-5ea81d4349ba/28534236-7748-44b5-9086-2a0883a48315/image.png)
+![12](https://github.com/user-attachments/assets/17265561-14ea-4383-863f-4369215c710a)
+![13](https://github.com/user-attachments/assets/736d988e-c9ef-4fd7-9d34-a61dc78c174b)
 
-![image.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/75620ae2-9ad6-409a-a317-5ea81d4349ba/c7bfbcf6-fe63-465e-87d7-4ec995977f4c/image.png)
 
 ```bash
 pipeline {
