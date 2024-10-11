@@ -29,14 +29,14 @@
 
 ## 💻 시스템 환경 및 소프트웨어
 
-- **운영 체제:** Ubuntu 22.04.5 LTS
+- **운영 체제:** <img src="https://img.shields.io/badge/Ubuntu-E95420?style=flat-square&logo=Ubuntu&logoColor=white"/> 22.04.5 LTS
 - **클라우드 서비스:**
-  - AWS EC2
-  - AWS RDS
-  - AWS S3
-- **CI/CD 도구:** Jenkins
-- **터미널 에뮬레이터:** MobaXterm
-- **컨테이너화:** Docker 27.3.1
+  - <img src="https://img.shields.io/badge/amazonec2-FF9900?style=flat-square&logo=amazonec2&logoColor=white"/>
+  - <img src="https://img.shields.io/badge/amazonrds-527FFF?style=flat-square&logo=amazonrds&logoColor=white"/>
+  - <img src="https://img.shields.io/badge/amazons3-569A31?style=flat-square&logo=amazons3&logoColor=white"/>
+- **CI/CD 도구:** <img src="https://img.shields.io/badge/jenkins-D24939?style=flat-square&logo=jenkins&logoColor=white"/>
+- **터미널 에뮬레이터:** <img src="https://img.shields.io/badge/MobaXterm-241F31?style=flat-square&logo=MobaXterm&logoColor=white"/>
+- **컨테이너화:** <img src="https://img.shields.io/badge/Docker-2496ED?style=flat-square&logo=Docker&logoColor=white"/> 27.3.1
 <br/><br/>
 
 ## ⛯ 자동화된 배포 과정 다이어그램 
