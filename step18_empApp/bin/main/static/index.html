@@ -6,7 +6,7 @@
 </head>
 <body>
 
-	<h3>20240926 10시 : 모든 부서 정보 검색</h3>
+	<h3>홍민영 : 모든 부서 정보 검색</h3>
 	
     <button id="deptList">모든 부서 정보 보기</button>
     <div id="deptListView"></div>
@@ -15,10 +15,7 @@
     
         // 페이지 로드 후 버튼에 클릭 이벤트 리스너 추가
         document.getElementById('deptList').addEventListener('click', function() {
-            
-        	//fetch("url").then(정상응답).catch(비정상응답);
-        	
-        	// Fetch API를 사용한 GET 요청
+            // Fetch API를 사용한 GET 요청
             fetch('/alldepts')
                 .then(response => {
                     // JSON 형식의 응답 데이터를 받음
@@ -31,19 +28,10 @@
                     // 받아온 부서 정보를 HTML로 표시
                     console.log(data); // 받아온 데이터를 콘솔에 출력
                     
-                    //html상에 응답된 데이터를 출력하는 tag의 위치 tag를 객체화해서 인지
                     // 예시: 부서 정보를 리스트 형태로 표시
                     let deptListDiv = document.getElementById('deptListView');
                     
                     deptListDiv.innerHTML = ''; // 기존 내용 지우기
-                    
-                    /* 개발 방법 1 - li.textContent = `부서 번호 : ${dept.deptno}, 부서명: ${dept.dname}, 부서위치: ${dept.loc}`;
-                     			  ul.innerHTML = "<ul>` ${textContent}` </ul>";
-                     			  결론 : 문자열 탈취후 가공(부당한 일 발생 가능성이 높음)
-                    
-                       개발 방법 2 - 하단 코드는 필요에 의해 함수로 tag 자체와 html 구조 생성 
-                       			  안정적인 개발 형식
-                    */
                     let ul = document.createElement('ul');
 
                     data.forEach(dept => {
