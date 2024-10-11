@@ -197,6 +197,14 @@ username@servername:~$ docker exec -u root myjenkins bash -c "chmod 400 /var/lib
     - 역할 생성을 선택하고, AWS Service에서 EC2를 선택
     - 적절한 정책을 선택하여 EC2 인스턴스와 연결
 
+1-1. 역할 생성 클릭 
+![im1](https://github.com/user-attachments/assets/8e02168a-7e17-4a29-9026-a0da0a7a95ce)
+
+1-2. AWS Service 선택 - EC2
+![im3](https://github.com/user-attachments/assets/1d090d9f-e248-468d-8c97-a1a4a9c5a8f2)
+
+역할 생성하고 해당 EC2 인스턴스와 연결 
+![im2](https://github.com/user-attachments/assets/5deafa5c-f4c2-4047-8023-893437f8afa1)
 ### 3. Jenkins 파이프라인 스크립트
 
 ```groovy
