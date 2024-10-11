@@ -123,7 +123,7 @@ aws_secret_access_key =
 |+--------------------------------------------------+--------------------------------+|||
 ||||                                IamInstanceProfile                                 ||||
 |||+-------+---------------------------------------------------------------------------+|||
-||||  Arn  |  arn:aws:iam::646580111040:instance-profile/ce35-user                     ||||
+||||  Arn  |  arn:aws:iam::64********:instance-profile/ce35-user                     ||||
 ||||  Id   |  AIPAZ******************                                                  ||||
 |||+-------+---------------------------------------------------------------------------+
 ```
@@ -240,7 +240,7 @@ pipeline {
         S3_BUCKET = 'ce35-bucket-02'
         AWS_SHARED_CREDENTIALS_FILE = '/var/lib/jenkins/.aws/credentials'
         AWS_DEFAULT_REGION = 'ap-northeast-2'
-        EC2_INSTANCE_IP = '3.36.119.163'
+        EC2_INSTANCE_IP = '3.3*.***.***'
         EC2_USER = 'ubuntu'
         JAR_FILE_NAME = 'step18_empApp-0.0.1-SNAPSHOT.jar'
         PEM_KEY_PATH = '/var/lib/jenkins/.ssh/ce35-key.pem' // PEM 키 경로
