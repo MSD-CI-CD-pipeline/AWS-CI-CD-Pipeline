@@ -85,13 +85,13 @@
 ### 1. Jenkins 서버에 AWS CLI 설치
 ```bash
 # Jenkins 컨테이너에서 sudo 명령어 사용이 제한되어, root 계정으로 전환하여 작업했습니다. 
-docker exec -itu0 myjenkins bash 
+username@myserver01:~$ docker exec -u root -it myjenkins  /bin/bash
 
-apt-get update
+root@b487084d5f73:/# apt-get update
 
-apt-get install awscli -y
+root@b487084d5f73:/# apt-get install awscli -y
 
-aws configure
+root@b487084d5f73:/# aws configure
 AWS Access Key ID [****************JS2T]:
 AWS Secret Access Key [****************qPca]:
 Default region name [None]: ap-northeast-2
@@ -119,10 +119,12 @@ root@b487084d5f73:/# ls -l ~/.aws/credentials
 
 root@b487084d5f73:/# mkdir -p /var/lib/jenkins/.aws
 
-jenkins@b487084d5f73:/$ cat /var/lib/jenkins/.aws/credentials
+root@b487084d5f73:/# cp ~/.aws/credentials /var/lib/jenkins/.aws/
+
+root@b487084d5f73:/# cat /var/lib/jenkins/.aws/credentials
 [default]
-aws_access_key_id = 
-aws_secret_access_key =
+aws_access_key_id = AK****************
+aws_secret_access_key = QG***********************
 ```
 <br/>
 
