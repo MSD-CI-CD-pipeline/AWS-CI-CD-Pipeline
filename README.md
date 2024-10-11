@@ -78,7 +78,7 @@
 ## 2️⃣ 작업 2:Jenkins에서 S3로 JAR 파일 빌드 후 업로드
 ### 1. Jenkins 서버에 AWS CLI 설치
 ```bash
-# Jenkins 컨테이너에서 sudo 명령어 사용이 제한되어, root 계정으로 전환하여 작업
+# Jenkins 컨테이너에서 sudo 명령어 사용이 제한되어, root 계정으로 전환하여 작업했습니다. 
 docker exec -itu0 myjenkins bash 
 
 sudo apt-get update
@@ -87,14 +87,14 @@ apt-get install awscli -y
 
 aws configure
 ```
-* 만약 해당 과정 생략 후 빌드 시 아래와 같은 오류 발생함 (Jenkins 서버에 AWS CLI가 설치되어 있지 않거나 `PATH`에 포함되어 있지 않아서 발생하는 오류)
+* 만약 해당 과정 생략 후 빌드 시 아래와 같은 오류 발생했습니다. (Jenkins 서버에 AWS CLI가 설치되어 있지 않거나 `PATH`에 포함되어 있지 않아서 발생하는 오류)
      
    <img src="https://github.com/user-attachments/assets/11f23328-4d5e-4b96-a496-d2565cae0b53" width="65%">
 
 <br/>
 
 ### 2. Jenkins AWS 자격 증명에 읽기 권한 추가
-* Jenkins에서 AWS 리소스(S3 등)에 안전하게 접근할 수 있도록, AWS 자격 증명에 필요한 읽기 권한을 추가
+* Jenkins에서 AWS 리소스(S3 등)에 안전하게 접근할 수 있도록, AWS 자격 증명에 필요한 읽기 권한을 추가했습니다.
 ```bash
 # 읽기 권한 확인 (없음)
 root@b487084d5f73:/# ls -l ~/.aws/credentials
@@ -340,15 +340,15 @@ ubuntu@ip-10-11-6-115:~$ tree
 
 ### 요약
 
-- 위의 Jenkins 파이프라인은 S3에서 JAR 파일을 EC2로 복사한 후 실행하는 과정이다.
-- PEM 키는 Jenkins 컨테이너 내의 `.ssh` 디렉토리에 저장되어 있으며, IAM 역할이 EC2 인스턴스에 적절하게 부여되어 있어야 한다.
-- 스크립트 실행 후, JAR 파일이 EC2에서 성공적으로 배포되고 실행된다.
+- 위의 Jenkins 파이프라인은 S3에서 JAR 파일을 EC2로 복사한 후 실행하는 과정입니다.
+- PEM 키는 Jenkins 컨테이너 내의 `.ssh` 디렉토리에 저장되어 있으며, IAM 역할이 EC2 인스턴스에 적절하게 부여되어 있어야 합니다.
+- 스크립트 실행 후, JAR 파일이 EC2에서 성공적으로 배포되고 실행됩니다.
 
 <br/><br/>
 
 ## 🛠 트러블슈팅
 
-프로젝트 진행 중 다양한 문제에 직면했고, 이를 해결하는 과정에서 많은 것을 배웠다. 주요 트러블슈팅 사례는 다음과 같다:
+프로젝트 진행 중 다양한 문제에 직면했고, 이를 해결하는 과정에서 많은 것을 배웠다. 주요 트러블슈팅 사례는 다음과 같습니다:
 
 1. **Jenkins 서버의 AWS CLI 설정 문제**
     - 문제: Jenkins 서버에서 AWS CLI 명령어 실행 시 권한 오류 발생
