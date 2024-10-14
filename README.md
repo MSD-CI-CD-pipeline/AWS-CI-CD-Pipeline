@@ -304,8 +304,8 @@ pipeline {
                 script {
                     // EC2 인스턴스에서 S3에서 JAR 파일 다운로드
                     def copyCommand = """
-                    ssh -i ${env.PEM_KEY_PATH} -o StrictHostKeyChecking=no ${env.EC2_USER}@${env.EC2_INSTANCE_IP}
-                    aws s3 cp s3://${S3_BUCKET}/step18_empApp/${env.JAR_FILE_NAME} /tmp/${env.JAR_FILE_NAME}
+                    ssh -i ${env.PEM_KEY_PATH} -o StrictHostKeyChecking=no ${env.EC2_USER}@${env.EC2_INSTANCE_IP} \
+                    "aws s3 cp s3://${S3_BUCKET}/step18_empApp/${env.JAR_FILE_NAME} /tmp/${env.JAR_FILE_NAME}"
                     """
                     def result = sh(script: copyCommand, returnStatus: true)
 
@@ -325,7 +325,7 @@ pipeline {
                     def deployCommand = """
                     ssh -i ${env.PEM_KEY_PATH} -o StrictHostKeyChecking=no ${env.EC2_USER}@${env.EC2_INSTANCE_IP}
                     chmod +x /tmp/${env.JAR_FILE_NAME} &&
-                    sudo java -jar /tmp/${env.JAR_FILE_NAME}
+                    nohup java -jar /tmp/${env.JAR_FILE_NAME} > /tmp/app.log 2>&1 &
                     """
                     def result = sh(script: deployCommand, returnStatus: true) // 실행 상태 반환
                     if (result == 0) {
