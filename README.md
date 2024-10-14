@@ -123,6 +123,8 @@ root@b487084d5f73:/# chmod 775 /var/lib/jenkins
 
 root@b487084d5f73:/# cp ~/.aws/credentials /var/lib/jenkins/.aws/
 
+root@b487084d5f73:/# chmod 706 /var/lib/jenkins/.aws/credentials
+
 root@b487084d5f73:/# cat /var/lib/jenkins/.aws/credentials
 [default]
 aws_access_key_id = AK****************
