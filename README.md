@@ -119,6 +119,8 @@ root@b487084d5f73:/# ls -l ~/.aws/credentials
 
 root@b487084d5f73:/# mkdir -p /var/lib/jenkins/.aws
 
+root@b487084d5f73:/var/lib# chmod 775 jenkins 
+
 root@b487084d5f73:/# cp ~/.aws/credentials /var/lib/jenkins/.aws/
 
 root@b487084d5f73:/# cat /var/lib/jenkins/.aws/credentials
